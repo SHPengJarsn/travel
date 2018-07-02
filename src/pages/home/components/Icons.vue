@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page,index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key=item.id>
           <div class="icon-img">
@@ -72,7 +72,8 @@ export default {
             'http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png',
           desc: '名胜'
         }
-      ]
+      ],
+      swiperOption: {}
     }
   },
   computed: {
