@@ -8,7 +8,7 @@
       输入城市/景点/游玩主题
     </div>
     <div class="header-right">
-      test
+      城市
       <span class="iconfont city-icon">&#xe64a;</span>
     </div>
   </div>
