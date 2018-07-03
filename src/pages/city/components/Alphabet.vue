@@ -22,7 +22,8 @@ export default {
   data () {
     return {
       touchStatus: false,
-      startY: 0
+      startY: 0,
+      timer: null
     }
   },
   computed: {
@@ -48,11 +49,16 @@ export default {
     handleTouchMove (e) {
       // 拖动过程触发
       if (this.touchStatus) {
-        const touchY = e.touches[0].clientY - 79
-        const index = Math.floor((touchY - this.startY) / 20)
-        if (index >= 0 && index < this.letters.length) {
-          this.$emit('change', this.letters[index])
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 79
+          const index = Math.floor((touchY - this.startY) / 20)
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        }, 16)
       }
     },
     handleTouchEnd () {
