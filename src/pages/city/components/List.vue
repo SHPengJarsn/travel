@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item,key) of cities" :key="key">
+      <div class="area" v-for="(item,key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
           <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
@@ -36,11 +36,21 @@ export default {
   name: 'CityList',
   props: {
     cities: Object,
-    hotCities: Array
+    hotCities: Array,
+    letter: String
   },
   mounted () {
-    const scroll = new BScroll(this.$refs.wrapper)
-    console.log(this.cities, this.hotCities)
+    this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        const ele = this.$refs[this.letter][0]
+        // this.letter与动态绑定的ref值是相同的
+        this.scroll.scrollToElement(ele)
+        // 参数是DOM元素或者CSS选择器
+      }
+    }
   }
 }
 </script>
