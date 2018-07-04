@@ -5,7 +5,7 @@
         :key="item"
         :ref="item"
         @click="handleListClick"
-        @touchstart="handleTouchStart"
+        @touchstart.prevent="handleTouchStart"
         @touchmove="handleTouchMove"
         @touchend="handleTouchEnd"
     >
@@ -54,7 +54,7 @@ export default {
         }
         this.timer = setTimeout(() => {
           const touchY = e.touches[0].clientY - 79
-          const index = Math.floor((touchY - this.startY) / 20)
+          const index = Math.floor((touchY - this.startY) / 17)
           if (index >= 0 && index < this.letters.length) {
             this.$emit('change', this.letters[index])
           }
@@ -80,7 +80,7 @@ export default {
     bottom: 0
     width: .4rem
     .item
-      line-height: .4rem
+      line-height: .34rem
       text-align: center
       color: $bgColor
 </style>
