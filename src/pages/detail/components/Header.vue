@@ -59,6 +59,7 @@ export default {
       color: #fff
       font-weight: 900
   .header-fixed
+    z-index: 2
     position: fixed
     top: 0
     left: 0
