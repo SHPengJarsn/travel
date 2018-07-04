@@ -1,27 +1,31 @@
 <template>
   <div>
     <div class="banner" @click="handleGallaryClick">
-      <img class="banner-img" src="//img1.qunarzz.com/sight/p0/201405/23/0265195fc4b7913a758674357c3cc8f6.jpg_600x330_8b674516.jpg">
+      <img class="banner-img" :src="bannerImg">
       <div class="banner-info">
         <div class="banner-tittle">
-          北京欢乐水魔方
+          {{sightName}}
         </div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe626;</span>
-          11
+          {{gallaryImgs.length}}
         </div>
       </div>
     </div>
-    <common-gallary :imgs="imgs" v-show="showGallary" @close="closeGallary"></common-gallary>
+    <common-gallary :imgs="gallaryImgs" v-show="showGallary" @close="closeGallary"></common-gallary>
   </div>
 </template>
 <script>
 import CommonGallary from 'common/gallary/Gallary'
 export default {
   name: 'DetailBanner',
+  props: {
+    bannerImg: String,
+    gallaryImgs: Array,
+    sightName: String
+  },
   data () {
     return {
-      imgs: ['http://img1.qunarzz.com/sight/p0/201405/23/0265195fc4b7913a758674357c3cc8f6.jpg_350x240_26541a3a.jpg', 'http://img1.qunarzz.com/sight/p0/1612/4e/4ea64b1974f97db9a3.water.jpg_350x240_58c7a455.jpg'],
       showGallary: false
     }
   },
